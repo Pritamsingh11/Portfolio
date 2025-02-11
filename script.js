@@ -58,3 +58,37 @@
      span.style.animationDelay = `${index * 0.1}s`;
      name.appendChild(span);
  });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Image Click Event
+    document.querySelectorAll(".carousel-inner img").forEach(img => {
+        img.addEventListener("click", function () {
+            let modalImage = document.getElementById("modalImage");
+            modalImage.src = this.src;
+            let imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
+            imageModal.show();
+        });
+    });
+
+    // Read More Feature
+    document.querySelectorAll(".card-text").forEach(function (text) {
+        if (text.scrollHeight > 60) {
+            let readMore = document.createElement("span");
+            readMore.innerText = " Read More";
+            readMore.classList.add("read-more");
+            text.parentNode.appendChild(readMore);
+
+            readMore.addEventListener("click", function () {
+                if (text.style.maxHeight === "none") {
+                    text.style.maxHeight = "60px";
+                    readMore.innerText = " Read More";
+                } else {
+                    text.style.maxHeight = "none";
+                    readMore.innerText = " Show Less";
+                }
+            });
+        }
+    });
+});
+
+
