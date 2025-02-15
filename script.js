@@ -58,27 +58,6 @@
      span.style.animationDelay = `${index * 0.1}s`;
      name.appendChild(span);
  });
-
-//  document.addEventListener("DOMContentLoaded", function () {
-//     document.querySelectorAll(".card-text").forEach(function (text) {
-//         if (text.scrollHeight > 60) {  // Check if text overflows
-//             let readMore = document.createElement("span");
-//             readMore.innerText = " Read More";
-//             readMore.classList.add("read-more");
-//             text.parentNode.appendChild(readMore);
-
-//             readMore.addEventListener("click", function () {
-//                 if (text.style.maxHeight === "none") {
-//                     text.style.maxHeight = "60px";
-//                     readMore.innerText = " Read More";
-//                 } else {
-//                     text.style.maxHeight = "none";
-//                     readMore.innerText = " Show Less";
-//                 }
-//             });
-//         }
-//     });
-// });
 document.addEventListener("DOMContentLoaded", function () {
     // Image Click Event
     document.querySelectorAll(".carousel-inner img").forEach(img => {
@@ -132,4 +111,29 @@ document.getElementById("contactForm").addEventListener("submit", function(event
     }, function(error) {
         alert("Error: " + JSON.stringify(error));
     });
+});
+
+let topButton = document.getElementById("topBtn");
+window.onscroll = function() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        topButton.style.display = "block";
+    } else {
+        topButton.style.display = "none";
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+});
+
+document.addEventListener("keydown", function (e) {
+    if (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "i" || e.key === "I" || e.key === "j" || e.key === "J" || e.key === "s" || e.key === "S" || e.key === "h" || e.key === "H")) {
+        e.preventDefault();
+    }
+    if (e.keyCode === 123) { // Disable F12
+        e.preventDefault();
+    }
 });
