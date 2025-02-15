@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="topBtn" onclick="scrollToTop()">Top</button>
     <!-- Header -->
     <header class="header">
         <a href="#" class="logo">Portfolio</a>
@@ -30,7 +31,7 @@
     <section class="home" id="home">
         <div class="home-content">
             <h1>Hi, I'm <span class="animated-name">Pritam Singh</span></h1>
-            <h3>Full Stack .NET Developer</h3>
+            <h3>.NET Developer</h3>
             <p>I am a results-driven Full Stack .NET Developer with a strong passion for building scalable, high-performance web applications. With expertise in C#, ASP.NET Core, Entity Framework, Web API, SQL, and modern front-end frameworks, I specialize in developing robust back-end architectures while ensuring seamless integration with intuitive and engaging user interfaces.</p>
           <!-- <p>My focus is on delivering efficient, secure, and scalable solutions, leveraging the latest .NET technologies to drive innovation and enhance user experiences. Whether it's designing APIs, optimizing database performance, or implementing responsive UI components, I am committed to creating software that meets both business and user needs.</p> -->
             <!-- <div class="btn-box">
@@ -58,30 +59,38 @@
         </div>
         <div class="about-content">
             <h2>About Me</h2>
-            <p>I am a passionate and dedicated .NET Developer with over 3+ years of experience in designing and building robust, scalable web applications. My expertise lies in C#, ASP.NET, and SQL, where I focus on crafting dynamic, high-performance systems and delivering seamless user experiences. I thrive on integrating modern front-end technologies to create well-rounded solutions that align with both business goals and user needs.</p>
-            <p>Beyond coding, I am an avid hiker, gamer, and tech enthusiast. I love exploring the latest advancements in technology and applying creative problem-solving to both my professional and personal projects.</p>
+            <p>I am a passionate and dedicated .NET Developer with over 3+ years of experience in designing and building robust, scalable web applications. My expertise lies in C#, ASP.NET, and SQL, where I focus on crafting dynamic, high-performance systems and delivering seamless user experiences. I thrive on integrating modern front-end technologies to create well-rounded solutions that align with both business goals and user needs.</p><p>Beyond coding, I am an avid hiker, gamer, and tech enthusiast. I love exploring the latest advancements in technology and applying creative problem-solving to both my professional and personal projects.</p>
         </div>
     </section>
 
 <section class="experience" id="experience">
-    <div class="container mt-5">
-        <h2>Experience Timeline</h2>
+    <div class="container py-5">
+        <h2 class="text-center mb-5">Experience Timeline</h1>
         <div class="timeline">
-            <div class="timeline-item">
-                <h5>.NET Developer</h5>
-                <p><strong>Zenith Holidays Limited</strong></p>
-                <p>May 2025 - Present</p>
+            <!-- First Item -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Zenith Holidays Limited</h3>
+                    <p><strong>Position:</strong> .NET Developer</p>
+                    <p><strong>Duration:</strong> May 2024 - Present</p>
+                    </div>
             </div>
-            <div class="timeline-item">
-                <h5>.NET Developer</h5>
-                <p><strong>Rebin Infotech</strong></p>
-                <p>Sep 2023 - Apr 2024</p>
+            <!-- Second Item -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Rebin Infotech</h3>
+                    <p><strong>Position:</strong> .NET Developer</p>
+                    <p><strong>Duration:</strong> Sep 2023 - Apr 2024</p>
+                </div>
             </div>
-            <div class="timeline-item">
-                <h5>.NET Developer</h5>
-                <p><strong>BrightCode Software Service</strong></p>
-                <p>Apr 2022 - Jul 2023</p>
-            </div>
+            <!-- Third Item -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Brightcode Software Services</h3>
+                    <p><strong>Position:</strong> .NET Developer</p>
+                    <p><strong>Duration:</strong> Apr 2022 - Jul 2023</p>
+                </div>
+                </div>
         </div>
     </div>
 </section>
