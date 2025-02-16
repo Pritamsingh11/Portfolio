@@ -49,15 +49,21 @@
  });
 
  // Name Animation
- const name = document.querySelector('.animated-name');
- const letters = name.textContent.split('');
- name.textContent = '';
- letters.forEach((letter, index) => {
-     const span = document.createElement('span');
-     span.textContent = letter;
-     span.style.animationDelay = `${index * 0.1}s`;
-     name.appendChild(span);
- });
+ window.onload = function () {
+    const name = document.querySelector('.animated-name');
+    if (name) {  
+        const letters = name.textContent.split('');
+        name.textContent = '';
+        letters.forEach((letter, index) => {
+            const span = document.createElement('span');
+            span.textContent = letter;
+            span.style.animationDelay = `${index * 0.1}s`;
+            name.appendChild(span);
+        });
+    } else {
+        console.error("Element with class '.animated-name' not found!");
+    }
+};
 document.addEventListener("DOMContentLoaded", function () {
     // Image Click Event
     document.querySelectorAll(".carousel-inner img").forEach(img => {
@@ -125,15 +131,77 @@ window.onscroll = function() {
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-});
+// document.addEventListener("contextmenu", function (e) {
+//     e.preventDefault();
+// });
 
-document.addEventListener("keydown", function (e) {
-    if (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "i" || e.key === "I" || e.key === "j" || e.key === "J" || e.key === "s" || e.key === "S" || e.key === "h" || e.key === "H")) {
-        e.preventDefault();
+// document.addEventListener("keydown", function (e) {
+//     if (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "i" || e.key === "I" || e.key === "j" || e.key === "J" || e.key === "s" || e.key === "S" || e.key === "h" || e.key === "H")) {
+//         e.preventDefault();
+//     }
+//     if (e.keyCode === 123) { // Disable F12
+//         e.preventDefault();
+//     }
+// });
+
+// LocalStorage Initialization
+let users = JSON.parse(localStorage.getItem("users")) || {};
+let userName = localStorage.getItem("userName") || "Anonymous";
+
+users[userName] = (users[userName] || 0) + 1;
+localStorage.setItem("users", JSON.stringify(users));
+
+// function requestPassword() {
+//     let password = prompt("Enter the admin password:");
+//     const correctPasswordHash = "6b3a55e0261b0304143f805a24924d0c1c44524821305f31d9277843b8a10f4e"; // SHA-256 hash of "PS1121"
+//     const inputHash = sha256(password);
+
+//     console.log("Entered password:", password);
+//     console.log("Hashed input:", inputHash);
+
+//     if (inputHash === correctPasswordHash) {
+//         showModal();
+//     } else {
+//         alert("Incorrect password! Access denied.");
+//     }
+// }
+
+// function sha256(input) {
+//     return CryptoJS.SHA256(input).toString(CryptoJS.enc.Hex); // Ensure the hash is in hexadecimal format
+// }
+function requestPassword() {
+    let password = prompt("Enter the admin password:");
+    const correctPassword = "1121"; // Plain text password for debugging
+
+    // Debugging: Log the entered password
+    console.log("Entered password:", password);
+
+    if (password === correctPassword) {
+        showModal();
+    } else {
+        alert("Incorrect password! Access denied.");
     }
-    if (e.keyCode === 123) { // Disable F12
-        e.preventDefault();
+}
+
+function showModal() {
+    let visitorTableBody = document.getElementById("visitorTableBody");
+    visitorTableBody.innerHTML = "";
+    for (let user in users) {
+        let row = `<tr><td>${escapeHtml(user)}</td><td>${escapeHtml(users[user].toString())}</td></tr>`;
+        visitorTableBody.innerHTML += row;
     }
-});
+
+    document.getElementById("visitModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("visitModal").style.display = "none";
+}
+
+function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;')
+              .replace(/"/g, '&quot;')
+              .replace(/'/g, '&#039;');
+}
