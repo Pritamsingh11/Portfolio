@@ -616,7 +616,7 @@ h1 {
     padding-top: 2rem !important;
     padding-bottom: 0rem !important;
 }
-.modal {
+.modal1 {
     display: none; /* Hidden by default */
     position: fixed;
     z-index: 1;
